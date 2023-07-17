@@ -7,20 +7,16 @@ import { Navigation } from './components/Navigation';
 import './App.css';
 import { useState } from 'react';
 
-export const userContext = React.createContext();
-
 function App() {
   const [signedIn, setSignedIn ] = useState(false);
 
   return (
     <Router>
-      <userContext.Provider value={[signedIn, setSignedIn]}>
-        <Navigation />
+        <Navigation signedIn={signedIn} setSignedIn={setSignedIn}/>
         <Routes>
-          <Route path='/' element={<Home />} />      
-          <Route path='/dashboard' element={<Dashboard />} />
-        </Routes>
-      </userContext.Provider>
+          <Route path='/' element={<Home  signedIn={signedIn} setSignedIn={setSignedIn}/>} />      
+          <Route path='/dashboard' element={<Dashboard  signedIn={signedIn} setSignedIn={setSignedIn}/>} />
+        </Routes>      
     </Router>
   );
 }

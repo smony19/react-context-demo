@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 import Button from'react-bootstrap/Button';
-import { userContext } from "../App";
 
-function Home() {
-
-    const [signedIn] = useContext(userContext);
+function Home(props) {
+    
     return (
         <Card className="mx-2">
         
@@ -15,7 +13,7 @@ function Home() {
                 Some quick example text to build on the home page title and make up the
                 bulk of the page content.
             </Card.Text>
-            {signedIn ? <Button variant="primary">Go to Dashboard</Button> : <Button variant="primary">Sign In</Button>}
+            {props.signedIn ? <Button variant="primary">Go to Dashboard</Button> : <Button variant="primary">Sign In</Button>}
         </Card.Body>
         </Card>
     );
